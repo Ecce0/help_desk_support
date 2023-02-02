@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, createAction } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import authService from './authService'
 
 const user = JSON.parse(localStorage.getItem('user'))
@@ -48,8 +48,8 @@ export const authSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.
-         addCase(registerUser.pending, (state) => {
+    builder
+         .addCase(registerUser.pending, (state) => {
           state.isLoading = true
          })
          .addCase(registerUser.fulfilled, (state, action) => {
